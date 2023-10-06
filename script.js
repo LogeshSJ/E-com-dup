@@ -196,18 +196,18 @@ window.addEventListener("load", () => {
     localStorage.setItem("users", JSON.stringify(initialusers));
   }
 
-  if (location.pathname === "/index.html") {
+  if (location.pathname === "/E-com-dup/index.html") {
     loadHomePage();
   }
 
-  if (location.pathname === "/index1.html") {
+  if (location.pathname === "/E-com-dup/index1.html") {
     loadAdminHomePage();
   }
-  if (location.pathname === "/cart.html") {
+  if (location.pathname === "/E-com-dup/cart.html") {
     loadCartPage();
   }
 
-  if (location.pathname === "/add_product.html") {
+  if (location.pathname === "/E-com-dup/add_product.html") {
     let params = new URL(document.location).searchParams;
     let productId = params.get("id");
     if (productId) {
@@ -254,8 +254,8 @@ const signIn = () => {
     } else {
       sessionStorage.setItem("userId", loggedInUser.id);
       if (Remail.value === "admin@gmail.com")
-        location.replace("/index1.html");
-      else location.replace("/index.html");
+        location.replace("/E-com-dup/index1.html");
+      else location.replace("/E-com-dup/index.html");
     }
   } else {
     Rerror.innerText = "Email or password is empty";
@@ -286,7 +286,7 @@ const signUp = () => {
       });
 
       localStorage.setItem("users", JSON.stringify(users));
-      location.href = "/login.html";
+      location.href = "/E-com-dup/login.html";
     } else {
       errorR.innerText = "Password incorrect!!!";
     }
@@ -394,7 +394,7 @@ const saveOrUpdateHandler = () => {
   }, 2000);
 
   localStorage.setItem("products", JSON.stringify(products));
-  location.href = "/index1.html";
+  location.href = "/E-com-dup/index1.html";
 };
 
 // delete product
@@ -408,7 +408,7 @@ const deleteProductHandler = (id) => {
 // user singout handler
 const userLogOut = () => {
   sessionStorage.clear();
-  location.replace("/login.html");
+  location.replace("/E-com-dup/login.html");
 };
 
 // edit
@@ -455,7 +455,7 @@ const editProductHandler = () => {
     }, 2000);
 
     localStorage.setItem("products", JSON.stringify(products));
-    location.href = "/index1.html";
+    location.href = "/E-com-dup/index1.html";
   }
 };
 
@@ -484,7 +484,7 @@ const addToCartHandler = (id) => {
   const product = products.find((product) => product.id === parseInt(id));
 
   if (!sessionStorage.getItem("userId")) {
-    location.href = "/login.html";
+    location.href = "/E-com-dup/login.html";
   } else {
     let userId = parseInt(sessionStorage.getItem("userId"));
     let cart = [];
@@ -549,7 +549,7 @@ const loadCartPage = () => {
       cartTableRef.innerHTML = body;
       totalRef.innerText = `Total - ₹ ${total}`;
     } else {
-      location.href = "/login.html";
+      location.href = "/E-com-dup/login.html";
     }
   }
 };
@@ -577,11 +577,11 @@ const checkOutHandler = () => {
       localStorage.setItem("cart", JSON.stringify(otherUserCart));
       localStorage.setItem("orders", JSON.stringify(orders));
       // updateCartCount();
-      location.href = "/index.html";
+      location.href = "/E-com-dup/index.html";
     } else {
-      location.href = "/index.html";
+      location.href = "/E-com-dup/index.html";
     }
   } else {
-    location.href = "/login.html";
+    location.href = "/E-com-dup/login.html";
   }
 };
